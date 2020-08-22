@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.cacomas.juegosdememoria.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_juego1"
+            app:destination="@id/juego1" />
+        <action
+            android:id="@+id/action_mainFragment_to_juego2"
+            app:destination="@id/juego2" />
+    </fragment>
+    <fragment
+        android:id="@+id/juego1"
+        android:name="com.cacomas.juegosdememoria.Juego1"
+        android:label="fragment_juego1"
+        tools:layout="@layout/fragment_juego1" />
+    <fragment
+        android:id="@+id/juego2"
+        android:name="com.cacomas.juegosdememoria.Juego2"
+        android:label="fragment_juego2"
+        tools:layout="@layout/fragment_juego2" />
+</navigation>
