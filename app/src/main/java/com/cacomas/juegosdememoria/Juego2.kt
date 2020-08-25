@@ -67,6 +67,172 @@ class Juego2 : Fragment() {
             view.findViewById<ImageButton>(R.id.imageButton42)
         )
 
+        resetButtons(buttons)
+
+        buttons[0].setOnClickListener {
+            buttons[0].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[0]))
+        }
+        buttons[1].setOnClickListener {
+            buttons[1].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[1]))
+        }
+        buttons[2].setOnClickListener {
+            buttons[2].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[2]))
+        }
+        buttons[3].setOnClickListener {
+            buttons[3].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[3]))
+        }
+        buttons[4].setOnClickListener {
+            buttons[4].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[4]))
+        }
+        buttons[5].setOnClickListener {
+            buttons[5].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[5]))
+        }
+        buttons[6].setOnClickListener {
+            buttons[6].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[6]))
+        }
+        buttons[7].setOnClickListener {
+            buttons[7].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[7]))
+        }
+        buttons[8].setOnClickListener {
+            buttons[8].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[8]))
+        }
+        buttons[9].setOnClickListener {
+            buttons[9].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[9]))
+        }
+        buttons[10].setOnClickListener {
+            buttons[10].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[10]))
+        }
+        buttons[11].setOnClickListener {
+            buttons[11].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[11]))
+        }
+        buttons[12].setOnClickListener {
+            buttons[12].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[12]))
+        }
+        buttons[13].setOnClickListener {
+            buttons[13].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[13]))
+        }
+        buttons[14].setOnClickListener {
+            buttons[14].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[14]))
+        }
+        buttons[15].setOnClickListener {
+            buttons[15].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[15]))
+        }
+        buttons[16].setOnClickListener {
+            buttons[16].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[16]))
+        }
+        buttons[17].setOnClickListener {
+            buttons[17].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[17]))
+        }
+        buttons[18].setOnClickListener {
+            buttons[18].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[18]))
+        }
+        buttons[19].setOnClickListener {
+            buttons[19].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[19]))
+        }
+        buttons[20].setOnClickListener {
+            buttons[20].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[20]))
+        }
+        buttons[21].setOnClickListener {
+            buttons[21].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[21]))
+        }
+        buttons[22].setOnClickListener {
+            buttons[22].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[22]))
+        }
+        buttons[23].setOnClickListener {
+            buttons[23].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[23]))
+        }
+        buttons[24].setOnClickListener {
+            buttons[24].setImageResource(R.drawable.morado)
+            arr.add(getPos(buttons,buttons[24]))
+        }
+
+
+        val Comenzar : Button = view.findViewById(R.id.button_Comenzar_j2)
+        var rnds = 0
+        var rnds2= 0
+        var ButtonAux : ImageButton = buttons.get(rnds)
+        var level = 1
+        var firstTime = 0
+
+        Comenzar.setOnClickListener {
+            if (firstTime != 0){
+                if (comparacion(arr, arr2, buttons) == 1){
+                    level += 1
+                    arr.clear()
+                    arr2.clear()
+                }else{
+                    level = 1
+                    arr.clear()
+                    arr2.clear()
+                }
+            }
+            else{
+                firstTime = 1
+
+                rnds = (0..24).random()
+                buttons.get(rnds).setImageResource(R.drawable.morado)
+                arr2.add(getPos(buttons, buttons[rnds]))
+
+                GlobalScope.launch(context = Dispatchers.Main) {
+                    delay(1000)
+                    buttons.get(rnds).setImageResource(R.drawable.interrogacion)
+                }
+
+            }
+
+            rnds2 = (0..24).random()
+            while (rnds2==rnds){
+                rnds2 = (0..24).random()
+            }
+            buttons.get(rnds2).setImageResource(R.drawable.morado)
+            arr2.add(getPos(buttons, buttons[rnds2]))
+
+            GlobalScope.launch(context = Dispatchers.Main) {
+                delay(2000)
+                buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
+            }
+        }
+
+    }
+
+    fun getPos(buttons : Array<ImageButton>, imageButton : ImageButton): Int {
+        return buttons.indexOf(imageButton)
+    }
+
+    fun comparacion(arr : ArrayList<Int>, arr2 : ArrayList<Int>, buttons : Array<ImageButton>): Int{
+        resetButtons(buttons)
+        return if (arr == arr2){
+            1
+        }else{
+            0
+        }
+    }
+
+    fun resetButtons(buttons : Array<ImageButton>){
         buttons[0].setImageResource(R.drawable.interrogacion)
         buttons[1].setImageResource(R.drawable.interrogacion)
         buttons[2].setImageResource(R.drawable.interrogacion)
@@ -92,159 +258,6 @@ class Juego2 : Fragment() {
         buttons[22].setImageResource(R.drawable.interrogacion)
         buttons[23].setImageResource(R.drawable.interrogacion)
         buttons[24].setImageResource(R.drawable.interrogacion)
-
-        buttons[0].setOnClickListener {
-            arr.add(getPos(buttons,buttons[0]))
-        }
-        buttons[1].setOnClickListener {
-            arr.add(getPos(buttons,buttons[1]))
-        }
-        buttons[2].setOnClickListener {
-            arr.add(getPos(buttons,buttons[2]))
-        }
-        buttons[3].setOnClickListener {
-            arr.add(getPos(buttons,buttons[3]))
-        }
-        buttons[4].setOnClickListener {
-            arr.add(getPos(buttons,buttons[4]))
-        }
-        buttons[5].setOnClickListener {
-            arr.add(getPos(buttons,buttons[5]))
-        }
-        buttons[6].setOnClickListener {
-            arr.add(getPos(buttons,buttons[6]))
-        }
-        buttons[7].setOnClickListener {
-            arr.add(getPos(buttons,buttons[7]))
-        }
-        buttons[8].setOnClickListener {
-            arr.add(getPos(buttons,buttons[8]))
-        }
-        buttons[9].setOnClickListener {
-            arr.add(getPos(buttons,buttons[9]))
-        }
-        buttons[10].setOnClickListener {
-            arr.add(getPos(buttons,buttons[10]))
-        }
-        buttons[11].setOnClickListener {
-            arr.add(getPos(buttons,buttons[11]))
-        }
-        buttons[12].setOnClickListener {
-            arr.add(getPos(buttons,buttons[12]))
-        }
-        buttons[13].setOnClickListener {
-            arr.add(getPos(buttons,buttons[13]))
-        }
-        buttons[14].setOnClickListener {
-            arr.add(getPos(buttons,buttons[14]))
-        }
-        buttons[15].setOnClickListener {
-            arr.add(getPos(buttons,buttons[15]))
-        }
-        buttons[16].setOnClickListener {
-            arr.add(getPos(buttons,buttons[16]))
-        }
-        buttons[17].setOnClickListener {
-            arr.add(getPos(buttons,buttons[17]))
-        }
-        buttons[18].setOnClickListener {
-            arr.add(getPos(buttons,buttons[18]))
-        }
-        buttons[19].setOnClickListener {
-            arr.add(getPos(buttons,buttons[19]))
-        }
-        buttons[20].setOnClickListener {
-            arr.add(getPos(buttons,buttons[20]))
-        }
-        buttons[21].setOnClickListener {
-            arr.add(getPos(buttons,buttons[21]))
-        }
-        buttons[22].setOnClickListener {
-            arr.add(getPos(buttons,buttons[22]))
-        }
-        buttons[23].setOnClickListener {
-            arr.add(getPos(buttons,buttons[23]))
-        }
-        buttons[24].setOnClickListener {
-            arr.add(getPos(buttons,buttons[24]))
-        }
-
-
-        val Comenzar : Button = view.findViewById(R.id.button_Comenzar_j2)
-        var rnds = 0
-        var rnds2= 0
-        var ButtonAux : ImageButton = buttons.get(rnds)
-        var level = 1
-        var firstTime = 0
-
-        Comenzar.setOnClickListener {
-            if (firstTime != 0){
-                if (comparacion(arr, arr2) == 1){
-                    level += 1
-                    arr.clear()
-                    arr2.clear()
-                }else{
-                    level = 1
-                    arr.clear()
-                    arr2.clear()
-                }
-            }
-
-            when (level){
-                1 ->{
-                    firstTime = 1
-
-                    rnds = (0..24).random()
-                    buttons.get(rnds).setImageResource(R.drawable.morado)
-                    arr2.add(getPos(buttons, buttons[rnds]))
-
-                    GlobalScope.launch(context = Dispatchers.Main) {
-                        delay(1000)
-                        buttons.get(rnds).setImageResource(R.drawable.interrogacion)
-                    }
-
-                    rnds2 = (0..24).random()
-                    while (rnds2==rnds){
-                        rnds2 = (0..24).random()
-                    }
-                    buttons.get(rnds2).setImageResource(R.drawable.morado)
-                    arr2.add(getPos(buttons, buttons[rnds2]))
-
-                    GlobalScope.launch(context = Dispatchers.Main) {
-                        delay(1000)
-                        buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
-                    }
-
-                    /**GlobalScope.launch(context = Dispatchers.Main) {
-                        delay(1000)
-                        buttons.get(rnds).setImageResource(R.drawable.interrogacion)
-                        buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
-                    }*/
-                }
-            }
-
-            /**buttons.get(rnds).setBackgroundColor(resources.getColor(R.color.colorPrimary));
-            rnds = (0..24).random();
-            buttons.get(rnds).setBackgroundColor(resources.getColor(R.color.colorPrimary));
-            GlobalScope.launch(context = Dispatchers.Main) {
-                delay(1000)
-                    buttons.get(rnds).setBackgroundColor(Color.LTGRAY);
-                    buttons.get(auxRnd).setBackgroundColor(Color.LTGRAY);
-            }*/
-        }
-
-    }
-
-    fun getPos(buttons : Array<ImageButton>, imageButton : ImageButton): Int {
-        return buttons.indexOf(imageButton)
-    }
-
-    fun comparacion(arr : ArrayList<Int>, arr2 : ArrayList<Int>): Int{
-        return if (arr == arr2){
-            1
-        }else{
-            0
-        }
     }
 
 }
