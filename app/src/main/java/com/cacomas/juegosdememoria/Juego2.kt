@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -182,6 +183,8 @@ class Juego2 : Fragment() {
             if (firstTime != 0){
                 if (comparacion(arr, arr2, buttons) == 1){
                     level += 1
+                    val Nivel : TextView=  view.findViewById(R.id.textView2)
+                    Nivel.text = "Nivel "+level.toString()
                     arr.clear()
                     arr2.clear()
                 }else{
@@ -208,13 +211,18 @@ class Juego2 : Fragment() {
             while (rnds2==rnds){
                 rnds2 = (0..24).random()
             }
-            buttons.get(rnds2).setImageResource(R.drawable.morado)
-            arr2.add(getPos(buttons, buttons[rnds2]))
+            for (i in 1..level){
+                buttons.get(rnds2).setImageResource(R.drawable.morado)
+                arr2.add(getPos(buttons, buttons[rnds2]))
 
-            GlobalScope.launch(context = Dispatchers.Main) {
-                delay(2000)
-                buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
+                GlobalScope.launch(context = Dispatchers.Main) {
+                    delay(2000)
+                    buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
+                }
+
+
             }
+
         }
 
     }
