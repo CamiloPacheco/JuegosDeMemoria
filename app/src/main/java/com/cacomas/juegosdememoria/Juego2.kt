@@ -39,6 +39,7 @@ class Juego2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var arr = ArrayList<Int>()
         var arr2 = ArrayList<Int>()
+        var randomm= listOf( 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24)
 
         val buttons = arrayOf(
             view.findViewById<ImageButton>(R.id.imageButton18),
@@ -173,13 +174,13 @@ class Juego2 : Fragment() {
 
 
         val Comenzar : Button = view.findViewById(R.id.button_Comenzar_j2)
-        var rnds = 0
-        var rnds2= 0
-        var ButtonAux : ImageButton = buttons.get(rnds)
         var level = 1
         var firstTime = 0
 
+        var time: Long =1000
+
         Comenzar.setOnClickListener {
+            randomm=randomm.shuffled()
             if (firstTime != 0){
                 if (comparacion(arr, arr2, buttons) == 1){
                     level += 1
@@ -193,31 +194,24 @@ class Juego2 : Fragment() {
                     arr2.clear()
                 }
             }
-            else{
+            else
                 firstTime = 1
 
-                rnds = (0..24).random()
-                buttons.get(rnds).setImageResource(R.drawable.morado)
-                arr2.add(getPos(buttons, buttons[rnds]))
+
+
+            for (i in 0..level){
 
                 GlobalScope.launch(context = Dispatchers.Main) {
-                    delay(1000)
-                    buttons.get(rnds).setImageResource(R.drawable.interrogacion)
+                    delay(1000*i.toLong())
+
+                    buttons.get(randomm[i]).setImageResource(R.drawable.morado)
+                    arr2.add(getPos(buttons, buttons[randomm[i]]))
                 }
 
-            }
-
-            rnds2 = (0..24).random()
-            while (rnds2==rnds){
-                rnds2 = (0..24).random()
-            }
-            for (i in 1..level){
-                buttons.get(rnds2).setImageResource(R.drawable.morado)
-                arr2.add(getPos(buttons, buttons[rnds2]))
-
                 GlobalScope.launch(context = Dispatchers.Main) {
-                    delay(2000)
-                    buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
+                    delay(1000*(level.toLong()+1))
+
+                    buttons.get(randomm[i]).setImageResource(R.drawable.interrogacion)
                 }
 
 
