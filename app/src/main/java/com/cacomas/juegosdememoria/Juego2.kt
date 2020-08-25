@@ -200,7 +200,7 @@ class Juego2 : Fragment() {
 
                     GlobalScope.launch(context = Dispatchers.Main) {
                         delay(1000)
-
+                        buttons.get(rnds).setImageResource(R.drawable.interrogacion)
                     }
 
                     rnds2 = (0..24).random()
@@ -212,9 +212,14 @@ class Juego2 : Fragment() {
 
                     GlobalScope.launch(context = Dispatchers.Main) {
                         delay(1000)
-                        buttons.get(rnds).setImageResource(R.drawable.interrogacion)
                         buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
                     }
+
+                    /**GlobalScope.launch(context = Dispatchers.Main) {
+                        delay(1000)
+                        buttons.get(rnds).setImageResource(R.drawable.interrogacion)
+                        buttons.get(rnds2).setImageResource(R.drawable.interrogacion)
+                    }*/
                 }
             }
 
