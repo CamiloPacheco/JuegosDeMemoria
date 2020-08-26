@@ -1,5 +1,6 @@
 package com.cacomas.juegosdememoria
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -40,6 +41,7 @@ class Juego2 : Fragment() {
         var arr = ArrayList<Int>()
         var arr2 = ArrayList<Int>()
         var randomm= listOf( 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24)
+        val builder = AlertDialog.Builder(this.context)
 
         val buttons = arrayOf(
             view.findViewById<ImageButton>(R.id.imageButton18),
@@ -181,6 +183,15 @@ class Juego2 : Fragment() {
 
         Comenzar.setOnClickListener {
             randomm=randomm.shuffled()
+            if(level == 26){
+                builder.setTitle("Wow!")
+                builder.setMessage("Has ganado?, Enhorabuena! no pense que alguien lo lograria")
+                builder.setPositiveButton("Nuevo juego", null)
+                val winnerDialog : AlertDialog = builder.create()
+                winnerDialog.show()
+                level = 1
+                firstTime = 0
+            }
             if (firstTime != 0){
                 if (comparacion(arr, arr2, buttons) == 1){
                     level += 1
@@ -189,14 +200,27 @@ class Juego2 : Fragment() {
                     arr.clear()
                     arr2.clear()
                 }else{
-                    level = 1
-                    arr.clear()
-                    arr2.clear()
+                    builder.setTitle("Ups")
+                    builder.setMessage("Usted ha perdido y sera enviado al nivel 1")
+                    builder.setPositiveButton("Continuar", null)
+                    val looserDialog : AlertDialog = builder.create()
+                    looserDialog.show()
+
+
+                    GlobalScope.launch(context = Dispatchers.Main) {
+                        delay(5000)
+                        level = 1
+                        val Nivel : TextView=  view.findViewById(R.id.textView2)
+                        Nivel.text = "Nivel "+level.toString()
+                        arr.clear()
+                        arr2.clear()
+                    }
                 }
             }
-            else
+            else {
                 firstTime = 1
-
+                Comenzar.setText("Continuar")
+            }
 
 
             for (i in 0..level){
