@@ -182,65 +182,78 @@ class Juego2 : Fragment() {
         var time: Long =1000
 
         Comenzar.setOnClickListener {
-            randomm=randomm.shuffled()
-            if(level == 26){
+            var sw = 0
+            randomm = randomm.shuffled()
+            if (level == 5) {
                 builder.setTitle("Wow!")
                 builder.setMessage("Has ganado?, Enhorabuena! no pense que alguien lo lograria")
-                builder.setPositiveButton("Nuevo juego", null)
-                val winnerDialog : AlertDialog = builder.create()
+                builder.setPositiveButton("Continuar", null)
+                sw = 1
+                val winnerDialog: AlertDialog = builder.create()
                 winnerDialog.show()
+                resetButtons(buttons)
                 level = 1
-                firstTime = 0
-            }
-            if (firstTime != 0){
-                if (comparacion(arr, arr2, buttons) == 1){
-                    level += 1
-                    val Nivel : TextView=  view.findViewById(R.id.textView2)
-                    Nivel.text = "Nivel "+level.toString()
+                GlobalScope.launch(context = Dispatchers.Main) {
+                    delay(1000)
+                    firstTime = 0
+                    Comenzar.setText("Comenzar")
+                    val Nivel: TextView = view.findViewById(R.id.textView2)
+                    Nivel.text = "Nivel " + level.toString()
                     arr.clear()
                     arr2.clear()
-                }else{
+                }
+            }
+            if (firstTime != 0) {
+                if (comparacion(arr, arr2, buttons) == 1) {
+                    level += 1
+                    val Nivel: TextView = view.findViewById(R.id.textView2)
+                    Nivel.text = "Nivel " + level.toString()
+                    arr.clear()
+                    arr2.clear()
+                } else {
                     builder.setTitle("Ups")
                     builder.setMessage("Usted ha perdido y sera enviado al nivel 1")
                     builder.setPositiveButton("Continuar", null)
-                    val looserDialog : AlertDialog = builder.create()
+                    firstTime = 0
+                    sw = 1
+                    level = 1
+                    val looserDialog: AlertDialog = builder.create()
                     looserDialog.show()
-
-
                     GlobalScope.launch(context = Dispatchers.Main) {
-                        delay(5000)
-                        level = 1
-                        val Nivel : TextView=  view.findViewById(R.id.textView2)
-                        Nivel.text = "Nivel "+level.toString()
+                        delay(1000)
+                        val Nivel: TextView = view.findViewById(R.id.textView2)
+                        Nivel.text = "Nivel " + level.toString()
+                        Comenzar.setText("Comenzar")
                         arr.clear()
                         arr2.clear()
                     }
                 }
-            }
-            else {
+            } else {
                 firstTime = 1
                 Comenzar.setText("Continuar")
             }
+            if (sw == 0){
+
+                for (i in 0..level) {
+
+                    GlobalScope.launch(context = Dispatchers.Main) {
+                        delay(1000 * i.toLong())
+
+                        buttons.get(randomm[i]).setImageResource(R.drawable.morado)
+                        arr2.add(getPos(buttons, buttons[randomm[i]]))
+                    }
 
 
-            for (i in 0..level){
+                    GlobalScope.launch(context = Dispatchers.Main) {
+                        delay(1000 * (level.toLong() + 1))
 
-                GlobalScope.launch(context = Dispatchers.Main) {
-                    delay(1000*i.toLong())
+                        buttons.get(randomm[i]).setImageResource(R.drawable.interrogacion)
+                    }
 
-                    buttons.get(randomm[i]).setImageResource(R.drawable.morado)
-                    arr2.add(getPos(buttons, buttons[randomm[i]]))
+
                 }
-
-                GlobalScope.launch(context = Dispatchers.Main) {
-                    delay(1000*(level.toLong()+1))
-
-                    buttons.get(randomm[i]).setImageResource(R.drawable.interrogacion)
-                }
-
-
-            }
-
+        }else
+                level=1
         }
 
     }

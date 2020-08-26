@@ -88,29 +88,29 @@ class Juego1 : Fragment() {
             Reinicio(view)
         }
             val boton: ImageButton = view.findViewById(R.id.imageButton3)
-            boton.setImageResource(R.drawable.interrogacion)
+            boton.setImageResource(R.drawable.interrogacion1)
             val boton1: ImageButton = view.findViewById(R.id.imageButton4)
-            boton1.setImageResource(R.drawable.interrogacion)
+            boton1.setImageResource(R.drawable.interrogacion1)
             val boton2: ImageButton =  view.findViewById(R.id.imageButton5)
-            boton2.setImageResource(R.drawable.interrogacion)
+            boton2.setImageResource(R.drawable.interrogacion1)
             val boton3: ImageButton =  view.findViewById(R.id.imageButton6)
-            boton3.setImageResource(R.drawable.interrogacion)
+            boton3.setImageResource(R.drawable.interrogacion1)
             val boton4: ImageButton =  view.findViewById(R.id.imageButton7)
-            boton4.setImageResource(R.drawable.interrogacion)
+            boton4.setImageResource(R.drawable.interrogacion1)
             val boton5: ImageButton =  view.findViewById(R.id.imageButton8)
-            boton5.setImageResource(R.drawable.interrogacion)
+            boton5.setImageResource(R.drawable.interrogacion1)
             val boton6: ImageButton =  view.findViewById(R.id.imageButton9)
-            boton6.setImageResource(R.drawable.interrogacion)
+            boton6.setImageResource(R.drawable.interrogacion1)
             val boton7: ImageButton =  view.findViewById(R.id.imageButton10)
-            boton7.setImageResource(R.drawable.interrogacion)
+            boton7.setImageResource(R.drawable.interrogacion1)
             val boton8: ImageButton =  view.findViewById(R.id.imageButton11)
-            boton8.setImageResource(R.drawable.interrogacion)
+            boton8.setImageResource(R.drawable.interrogacion1)
             val boton9: ImageButton =  view.findViewById(R.id.imageButton2)
-            boton9.setImageResource(R.drawable.interrogacion)
+            boton9.setImageResource(R.drawable.interrogacion1)
             val boton10: ImageButton =  view.findViewById(R.id.imageButton13)
-            boton10.setImageResource(R.drawable.interrogacion)
+            boton10.setImageResource(R.drawable.interrogacion1)
             val boton11: ImageButton =  view.findViewById(R.id.imageButton12)
-            boton11.setImageResource(R.drawable.interrogacion)
+            boton11.setImageResource(R.drawable.interrogacion1)
 
 
     }
@@ -126,9 +126,9 @@ class Juego1 : Fragment() {
                 if (Indices.get(i) != Indiceaux) {
 
 
-                    botonaux.setImageResource(R.drawable.interrogacion)
+                    botonaux.setImageResource(R.drawable.interrogacion1)
                     val valueName = view.findViewById<ImageButton>(BotonAuxId)
-                    valueName.setImageResource(R.drawable.interrogacion)
+                    valueName.setImageResource(R.drawable.interrogacion1)
                     Puntaje=Puntaje-10
 
 
@@ -162,40 +162,40 @@ class Juego1 : Fragment() {
         var strPuntaje:String = Puntaje.toString()
         puntajeText.setText(strPuntaje)
         val boton= view.findViewById<ImageButton>(R.id.imageButton3)
-        boton.setImageResource(R.drawable.interrogacion)
+        boton.setImageResource(R.drawable.interrogacion1)
 
         val boton1: ImageButton =view.findViewById(R.id.imageButton4)
-        boton1.setImageResource(R.drawable.interrogacion)
+        boton1.setImageResource(R.drawable.interrogacion1)
 
         val boton2: ImageButton = view.findViewById(R.id.imageButton5)
-        boton2.setImageResource(R.drawable.interrogacion)
+        boton2.setImageResource(R.drawable.interrogacion1)
 
         val boton3: ImageButton = view.findViewById(R.id.imageButton6)
-        boton3.setImageResource(R.drawable.interrogacion)
+        boton3.setImageResource(R.drawable.interrogacion1)
 
         val boton4: ImageButton = view.findViewById(R.id.imageButton7)
-        boton4.setImageResource(R.drawable.interrogacion)
+        boton4.setImageResource(R.drawable.interrogacion1)
 
         val boton5: ImageButton = view.findViewById(R.id.imageButton8)
-        boton5.setImageResource(R.drawable.interrogacion)
+        boton5.setImageResource(R.drawable.interrogacion1)
 
         val boton6: ImageButton =view. findViewById(R.id.imageButton9)
-        boton6.setImageResource(R.drawable.interrogacion)
+        boton6.setImageResource(R.drawable.interrogacion1)
 
         val boton7: ImageButton = view.findViewById(R.id.imageButton10)
-        boton7.setImageResource(R.drawable.interrogacion)
+        boton7.setImageResource(R.drawable.interrogacion1)
 
         val boton8: ImageButton = view.findViewById(R.id.imageButton11)
-        boton8.setImageResource(R.drawable.interrogacion)
+        boton8.setImageResource(R.drawable.interrogacion1)
 
         val boton9: ImageButton = view.findViewById(R.id.imageButton2)
-        boton9.setImageResource(R.drawable.interrogacion)
+        boton9.setImageResource(R.drawable.interrogacion1)
 
         val boton10: ImageButton = view.findViewById(R.id.imageButton13)
-        boton10.setImageResource(R.drawable.interrogacion)
+        boton10.setImageResource(R.drawable.interrogacion1)
 
         val boton11: ImageButton = view.findViewById(R.id.imageButton12)
-        boton11.setImageResource(R.drawable.interrogacion)
+        boton11.setImageResource(R.drawable.interrogacion1)
 
     }
 
